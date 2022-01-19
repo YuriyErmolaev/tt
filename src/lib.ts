@@ -3,7 +3,7 @@ export function renderBlock (elementId, html) {
   element.innerHTML = html
 }
 
-export function renderToast (message, action) {
+export function renderToast (message, action = null) {
   let messageText = ''
   
   if (message != null) {
@@ -26,7 +26,7 @@ export function renderToast (message, action) {
       if (action != null && action.handler != null) {
         action.handler()
       }
-      // renderToast(null)
+      renderToast(null)
     }
   }
 }
