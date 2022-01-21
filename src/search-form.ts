@@ -1,19 +1,18 @@
 import { renderBlock } from './lib.js'
-import { Datef } from './datef.js'
+import { date_convert } from './date_convert.js'
 
 export function renderSearchFormBlock (
-    inDate:Date = new Datef().getRelateDayDate(1),
-    outDate:Date = new Datef().getRelateDayDate(3)
+    inDate:Date = date_convert.getRelateDayDate(1),
+    outDate:Date = date_convert.getRelateDayDate(3)
 ) {
-  const datef = new Datef();
-  
-  const fInDate = datef.dateToStr(inDate);
-  const fOutDate = datef.dateToStr(outDate);
+    
+  const fInDate = date_convert.dateToStr(inDate);
+  const fOutDate = date_convert.dateToStr(outDate);
   
   renderBlock(
     'search-form-block',
     `
-    <form>
+    <form id="searchForm">
       <fieldset class="search-filedset">
         <div class="row">
           <div>
@@ -40,7 +39,9 @@ export function renderSearchFormBlock (
             <input id="max-price" type="text" value="" name="price" class="max-price" />
           </div>
           <div>
-            <div><button>Найти</button></div>
+            <div>
+              <button id="submitButton" type="submit" form="searchForm" value="Submit">Найтиt</button>
+            </div>            
           </div>
         </div>
       </fieldset>
