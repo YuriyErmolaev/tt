@@ -4,6 +4,7 @@ import { user_fns } from './user_fncs.js'
 import {storage_serve} from './storage_serve.js'
 import { SearchFormData } from './SearchFormData.js'
 import { find_offers } from './find_offers.js'
+import {getTodosByCount} from './getTodosByCount.js'
 import { renderToast } from './lib.js'
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -13,8 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
   interface User {
     name: string,
     avatarUrl: string
-  }
-  
+  }  
   type Types = "string" | "number" | "boolean";  
   const asUser = (data: unknown): User => {    
     const keyValidators: Record<keyof User, Types> = {
@@ -32,13 +32,22 @@ window.addEventListener('DOMContentLoaded', () => {
       return maybeUser;
     }
     throw new Error('data is not an User');  
-  }  
-  
+  }
   let gettedUser: unknown = user_fns.getUserData(),
       user = asUser(gettedUser);
 
   let favoritesAmount = +user_fns.getFavoritesAmount();
   
+
+  getTodosByCount(12)  
+  .then((todos) => {
+    console.log(todos);
+  })
+  .catch((error) => {
+    console.error(error)
+  });
+  
+
   user_fns.renderUserBlock( user.name, user.avatarUrl, favoritesAmount )
   renderSearchFormBlock()
   renderSearchStubBlock()
