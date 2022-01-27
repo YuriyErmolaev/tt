@@ -15,8 +15,11 @@ window.addEventListener('DOMContentLoaded', () => {
     name: string,
     avatarUrl: string
   }  
-  type Types = "string" | "number" | "boolean";  
-  const asUser = (data: unknown): User => {    
+  
+  
+  type Types = "string" | "number" | "boolean";
+  const asUser = (data: unknown): User => 
+  {
     const keyValidators: Record<keyof User, Types> = {
       name: "string",
       avatarUrl: "string"
@@ -31,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
       return maybeUser;
     }
-    throw new Error('data is not an User');  
+    throw new Error('data is not an User');
   }
   let gettedUser: unknown = user_fns.getUserData(),
       user = asUser(gettedUser);
