@@ -1,4 +1,4 @@
-import {} from 'sdk_flat'
+import {database} from 'sdk_flat'
 
 const database = [
     {
