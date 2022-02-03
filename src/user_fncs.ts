@@ -4,8 +4,8 @@ export const user_fns = {
   { 
     let user = JSON.parse( localStorage.user );   
     return user;
-  },
-  getFavoritesAmount(): unknown
+  },  
+  getFavoritesAmount(): number
   {
     let favoritesAmount = localStorage.favoritesAmount;
     return favoritesAmount;

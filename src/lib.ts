@@ -1,5 +1,5 @@
 export function renderBlock (elementId: string, html: string) {
-  const element = document.getElementById(elementId)
+  const element = document.getElementById(elementId) as HTMLElement;
   element.innerHTML = html
 }
 
@@ -12,7 +12,7 @@ interface actionObj {
   handler: CallableFunction
 }
 
-export function renderToast (message: messageObj, action: actionObj = null) {
+export function renderToast (message: messageObj, action: actionObj) {
   let messageText: string = ''
   
   if (message != null) {
@@ -35,7 +35,7 @@ export function renderToast (message: messageObj, action: actionObj = null) {
       if (action != null && action.handler != null) {
         action.handler()
       }
-      renderToast(null)
+      // renderToast(null)
     }
   }
 }

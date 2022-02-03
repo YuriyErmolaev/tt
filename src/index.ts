@@ -43,7 +43,9 @@ window.addEventListener('DOMContentLoaded', () => {
   renderSearchFormBlock()
   renderSearchStubBlock()
 
-  document.querySelector("#submitButton").addEventListener("click", function(e){    
+  let submitButton = document.querySelector("#submitButton") as HTMLElement;
+
+  submitButton.addEventListener("click", function(e){    
     let city = (document.getElementById('city') as HTMLInputElement).value,
       dateIn = (document.getElementById('check-in-date') as HTMLInputElement).value,
       dateOut = (document.getElementById('check-out-date') as HTMLInputElement).value,
