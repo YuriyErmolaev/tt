@@ -5,17 +5,27 @@ import {storage_serve} from './storage_serve.js'
 import { SearchFormData } from './SearchFormData.js'
 import { find_offers } from './find_offers.js'
 import {getTodosByCount} from './getTodosByCount.js'
+import { upperCase } from './string-helper.js'
+import { cloneDate } from 'flat-rent-sdk';
+
 import { renderToast } from './lib.js'
 
 window.addEventListener('DOMContentLoaded', () => {
   
+  
+  
+  let clonedDate = cloneDate(new Date());
+  
+  
   storage_serve.setStorageBase();
+  
+  console.log(upperCase('Harry Potter'));
+  console.log(upperCase(5));
   
   interface User {
     name: string,
     avatarUrl: string
-  }  
-  
+  }
   
   type Types = "string" | "number" | "boolean";
   const asUser = (data: unknown): User => 

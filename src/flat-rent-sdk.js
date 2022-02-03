@@ -1,15 +1,3 @@
-import {
-    flatObj,
-    customType    
-} from './sdk_flat_types.js'
-
-let testVarType: customType;
-
-// let f1: flat;
-
-// flat.id = '5_1';
-
-
 const database = [
     {
         id: 'vnd331',
@@ -58,14 +46,10 @@ export function addDays(date, days) {
     return date
 }
 
-export const backendPort = 3000
+export const backendPort = 3040
 export const localStorageKey = 'flat-rent-db'
 
 export class FlatRentSdk {
-    
-    database: flatObj[]
-    
-    
     constructor() {
         if (this._readDatabase() == null) {
             this._writeDatabase(database)
@@ -238,7 +222,7 @@ export class FlatRentSdk {
         })
     }
 
-    _formatFlatObject(flat, nightNumber = 0) {
+    _formatFlatObject(flat, nightNumber) {
         const formattedFlat = Object.assign({}, flat)
 
         formattedFlat.photos = formattedFlat.photos.map((photoUrl) => {
