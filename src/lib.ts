@@ -1,10 +1,19 @@
-export function renderBlock (elementId, html) {
+export function renderBlock (elementId: string, html: string) {
   const element = document.getElementById(elementId)
   element.innerHTML = html
 }
 
-export function renderToast (message, action = null) {
-  let messageText = ''
+interface messageObj {
+  text: string
+  type: string
+}
+interface actionObj {
+  name: string
+  handler: CallableFunction
+}
+
+export function renderToast (message: messageObj, action: actionObj = null) {
+  let messageText: string = ''
   
   if (message != null) {
     messageText = `
